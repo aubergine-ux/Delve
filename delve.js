@@ -65,9 +65,28 @@ function intialize(){
     })
 }
 
+
+
 function update () {
     let correct = 0;
     for (let c = 0; c < width; c++) {
-        
+        let currTile = document.getElementById(row.toString() + '-' + c.toString());
+        let letter = currTile.innerText;
+
+        //Is Letter in Correct position?
+        if (word[c] == letter) {
+            currTile.classList.add("correct");
+            correct += 1;
+        } // Is it in the Word?
+        else if (word.includes(letter)) {
+            currTile.classList.add("present");
+        } //Letter not in Word.
+        else {
+            currTile.classList.add("absent");
+        }
+    }
+
+    if (correct == width) {
+        gameOver = true;
     }
 }
