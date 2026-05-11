@@ -92,3 +92,27 @@ hr {
     justify-content: center;
     align-items: center;
 }
+
+/* Light mode (default) */
+:root {
+  --bg: #f5f0e8;
+  --text: #1a1a1a;
+  --surface: #ffffff;
+  --border: #cccccc;
+  --accent: #5a3e8c;
+}
+
+/* Dark mode */
+:root.dark {
+  --bg: #0d0d0f;
+  --text: #e8e6f0;
+  --surface: #1a1a24;
+  --border: #333344;
+  --accent: #9b7fe8;
+}
+
+/* Then use variables everywhere */
+body {
+  background: var(--bg);
+  color: var(--text);
+}

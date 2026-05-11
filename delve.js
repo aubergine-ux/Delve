@@ -22,6 +22,28 @@ window.onload = function(){
 
 function initialize(){
 
+    //Dark Mode Toggle
+    const toggle = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'dark') {
+        root.classList.add('dark');
+        toggle.textContent = '☀️';
+    }
+
+    if (!localStorage.getItem('theme')) {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            root.classList.add('dark');
+            toggle.textContent = '☀️';
+        }
+    }
+
+    toggle.addEventListener('click', () => {
+        const isDark = root.classList.toggle('dark');
+        toggle.textContent = isDark ? '☀️' : '🌙';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
     //Create Game Board.
     for (let r = 0; r < height; r++) {
         for(let c = 0; c < width; c++) {
